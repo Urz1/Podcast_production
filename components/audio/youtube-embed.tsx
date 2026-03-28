@@ -189,9 +189,6 @@ export function YouTubeEmbed({
                             startProgressPolling();
                             break;
                         case window.YT.PlayerState.PAUSED:
-                            setPlaying(false);
-                            stopProgressPolling();
-                            break;
                         case window.YT.PlayerState.ENDED:
                             setPlaying(false);
                             stopProgressPolling();
@@ -202,7 +199,7 @@ export function YouTubeEmbed({
                     }
                 },
             },
-        });
+        } as any);
     }, [videoId, episodeId, setPlaying, startProgressPolling, stopProgressPolling]);
 
     useEffect(() => {
