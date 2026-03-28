@@ -115,11 +115,12 @@ export function AmbientCanvas({
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        let startTime: number | null = null;
+        let lastTime: number | null = null;
 
         const animate = (timestamp: number) => {
-            if (startTime === null) startTime = timestamp;
-            const elapsed = timestamp - startTime;
+            if (lastTime === null) lastTime = timestamp;
+            const deltaTime = timestamp - lastTime;
+            lastTime = timestamp;
 
             const blobs = ensureBlobs();
             const rect = canvas.getBoundingClientRect();
@@ -129,8 +130,8 @@ export function AmbientCanvas({
                 interpolatePalette(blobs, topicColors, 0.02); // Slow lerp each frame
             }
 
-            // Update blob positions based on noise + playback state
-            updateBlobs(blobs, elapsed, state, config);
+            // Update blob positions based on noise + playback state using deltaTime
+            updateBlobs(blobs, deltaTime, state, config);
 
             // Render
             renderToCanvas(ctx, rect.width, rect.height, blobs, state, config, resolvedTheme === 'dark');

@@ -144,27 +144,27 @@ const generateChapters = (episodeNum: number): ChapterMarker[] => [
 export const mockEpisodes: Episode[] = [
   {
     id: 'ep-1',
-    slug: 'building-antifragile-organizations',
+    slug: 'sam-altman-openai-gpt4-agi',
     episodeNumber: 47,
-    title: 'Building Antifragile Organizations with Nassim Taleb',
-    description: 'A deep dive into creating organizations that don\'t just survive chaos—they thrive in it. We explore the principles of antifragility and how to apply them to modern businesses.',
-    summary: 'Learn how to build organizations that grow stronger from adversity. Nassim Taleb joins us to discuss antifragility, risk management, and why most businesses fail to prepare for uncertainty.',
+    title: 'Sam Altman: OpenAI CEO on GPT-4, ChatGPT, and the Future of AI',
+    description: 'Sam Altman is the CEO of OpenAI, the company behind GPT-4, ChatGPT, and DALL-E. We discuss the profound implications of AGI and the future of humanity.',
+    summary: 'A deep conversation with Sam Altman on the development of GPT-4, the challenges of AI alignment, and what the world looks like after AGI is achieved.',
     showNotes: `<h2>Episode Highlights</h2>
 <ul>
-<li>The difference between fragile, robust, and antifragile systems</li>
-<li>Why most risk management strategies fail</li>
-<li>Practical ways to introduce controlled stressors</li>
-<li>Building redundancy without waste</li>
+<li>The timeline for AGI and its potential impact</li>
+<li>GPT-4 capabilities and limitations</li>
+<li>The psychological toll of leading OpenAI</li>
+<li>Balancing safety and rapid deployment</li>
 </ul>
 <h2>Resources Mentioned</h2>
 <ul>
-<li><a href="#">Antifragile: Things That Gain from Disorder</a></li>
-<li><a href="#">The Black Swan</a></li>
+<li><a href="#">OpenAI Research Papers</a></li>
+<li><a href="#">GPT-4 Technical Report</a></li>
 </ul>`,
     publishedAt: '2024-03-15T08:00:00Z',
-    duration: 3420,
+    duration: 8636,
     audioUrl: '/audio/ep-47.mp3',
-    videoUrl: 'https://youtube.com/watch?v=example1',
+    videoUrl: 'https://youtube.com/watch?v=L_Guz73e6fw',
     coverImageUrl: '/images/episodes/ep-47.jpg',
     topics: [mockTopics[0], mockTopics[2], mockTopics[3]],
     hosts: mockHosts,
@@ -177,18 +177,19 @@ export const mockEpisodes: Episode[] = [
     id: 'ep-2',
     slug: 'future-of-remote-leadership',
     episodeNumber: 46,
-    title: 'The Future of Remote Leadership',
-    description: 'How the best leaders are adapting to distributed teams and what it means for organizational culture.',
-    summary: 'Explore the evolving landscape of remote work and leadership. We discuss communication strategies, building trust virtually, and maintaining culture across time zones.',
+    title: 'John Carmack: Doom, Quake, VR, AGI, Programming, and Aliens',
+    description: 'John Carmack is a legendary programmer, co-founder of id Software, and former Consulting CTO of Oculus VR. We delve deep into the art of programming, the mechanics of AGI, and the limits of computing.',
+    summary: 'A 5-hour technical masterclass with John Carmack, covering the engineering behind groundbreaking video games, virtual reality, and the pursuit of general artificial intelligence.',
     showNotes: `<h2>Episode Highlights</h2>
 <ul>
-<li>Async vs sync communication best practices</li>
-<li>Building psychological safety remotely</li>
-<li>Tools and systems for distributed teams</li>
+<li>The early days of game engine programming</li>
+<li>Optimizing reality for VR</li>
+<li>The path to Artificial General Intelligence</li>
 </ul>`,
-    publishedAt: '2024-03-08T08:00:00Z',
-    duration: 2880,
+    publishedAt: '2022-08-08T08:00:00Z',
+    duration: 18000,
     audioUrl: '/audio/ep-46.mp3',
+    videoUrl: 'https://youtube.com/watch?v=I845O57ZSy4',
     coverImageUrl: '/images/episodes/ep-46.jpg',
     topics: [mockTopics[0], mockTopics[1], mockTopics[4]],
     hosts: [mockHosts[0]],
@@ -201,18 +202,19 @@ export const mockEpisodes: Episode[] = [
     id: 'ep-3',
     slug: 'from-failure-to-fortune',
     episodeNumber: 45,
-    title: 'From Failure to Fortune: Lessons from Serial Entrepreneurs',
-    description: 'Three founders share their biggest failures and how those experiences led to their eventual success.',
-    summary: 'Failure is often the best teacher. Join us as three successful entrepreneurs reveal their lowest moments and the lessons that transformed their approach to business.',
+    title: 'Elon Musk: War, AI, Aliens, Politics, Physics, and Humanity',
+    description: 'Elon Musk is CEO of X, xAI, SpaceX, Tesla, Neuralink, and The Boring Company. A wide-ranging conversation on civilization\'s biggest questions.',
+    summary: 'Elon discusses the existential risks of AI, his motivations for acquiring Twitter (now X), the urgency of becoming a multi-planetary species, and the nature of consciousness.',
     showNotes: `<h2>Episode Highlights</h2>
 <ul>
-<li>The psychology of failure and recovery</li>
-<li>Pattern recognition across multiple ventures</li>
-<li>When to pivot vs when to persist</li>
+<li>The founding vision of xAI and Grok</li>
+<li>Engineering challenges of Starship</li>
+<li>Free speech and the digital town square</li>
 </ul>`,
     publishedAt: '2024-03-01T08:00:00Z',
-    duration: 3120,
+    duration: 7200,
     audioUrl: '/audio/ep-45.mp3',
+    videoUrl: 'https://youtube.com/watch?v=Kbk9BiPhm7o',
     coverImageUrl: '/images/episodes/ep-45.jpg',
     topics: [mockTopics[2], mockTopics[3], mockTopics[5]],
     hosts: mockHosts,
@@ -224,18 +226,19 @@ export const mockEpisodes: Episode[] = [
     id: 'ep-4',
     slug: 'ai-revolution-what-leaders-need-to-know',
     episodeNumber: 44,
-    title: 'The AI Revolution: What Leaders Need to Know',
-    description: 'Cutting through the hype to understand how AI will actually impact your business and leadership approach.',
-    summary: 'AI is transforming every industry. We separate fact from fiction and provide a practical framework for leaders navigating this technological shift.',
+    title: 'MrBeast: Future of YouTube, Twitter, TikTok, and Instagram',
+    description: 'Jimmy Donaldson, known as MrBeast, is the most subscribed individual creator on YouTube. We discuss his relentless drive and the science of virality.',
+    summary: 'MrBeast breaks down his content creation philosophy, the extreme sacrifices required to be number one, and his philanthropic visions for the future.',
     showNotes: `<h2>Episode Highlights</h2>
 <ul>
-<li>Real vs perceived AI capabilities</li>
-<li>Preparing your team for AI integration</li>
-<li>Ethical considerations and governance</li>
+<li>Analyzing retention and thumbnail psychology</li>
+<li>The early days of obsessive YouTube studying</li>
+<li>Balancing exponential growth with sanity</li>
 </ul>`,
     publishedAt: '2024-02-23T08:00:00Z',
-    duration: 2760,
+    duration: 5400,
     audioUrl: '/audio/ep-44.mp3',
+    videoUrl: 'https://youtube.com/watch?v=Z3_PwvvfxIU',
     coverImageUrl: '/images/episodes/ep-44.jpg',
     topics: [mockTopics[1], mockTopics[0], mockTopics[4]],
     hosts: [mockHosts[1]],
@@ -247,18 +250,19 @@ export const mockEpisodes: Episode[] = [
     id: 'ep-5',
     slug: 'building-your-personal-board-of-directors',
     episodeNumber: 43,
-    title: 'Building Your Personal Board of Directors',
-    description: 'How to cultivate a network of advisors who can guide your career and personal growth.',
-    summary: 'Every successful person has a support system. Learn how to build your own personal board of directors for career guidance and accountability.',
+    title: 'Sam Altman: OpenAI, GPT-5, Sora, Board Saga, and Ilya Sutskever',
+    description: 'Sam Altman returns to discuss the turbulence at OpenAI, the release of Sora, and the highly anticipated future of GPT-5.',
+    summary: 'In this follow-up interview, Sam opens up about the drama behind his temporary firing from OpenAI, the immense capabilities of their new text-to-video AI, and what AGI truly looks like.',
     showNotes: `<h2>Episode Highlights</h2>
 <ul>
-<li>Identifying the right mentors and advisors</li>
-<li>Structuring productive advisory relationships</li>
-<li>Giving back as you grow</li>
+<li>Reflections on the OpenAI board crisis</li>
+<li>The technical breakthroughs behind Sora</li>
+<li>Navigating the geopolitics of artificial intelligence</li>
 </ul>`,
-    publishedAt: '2024-02-16T08:00:00Z',
-    duration: 2400,
+    publishedAt: '2024-03-18T08:00:00Z',
+    duration: 7200,
     audioUrl: '/audio/ep-43.mp3',
+    videoUrl: 'https://youtube.com/watch?v=jvqFAi7vkBc',
     coverImageUrl: '/images/episodes/ep-43.jpg',
     topics: [mockTopics[5], mockTopics[3], mockTopics[0]],
     hosts: mockHosts,
@@ -270,18 +274,19 @@ export const mockEpisodes: Episode[] = [
     id: 'ep-6',
     slug: 'deep-work-in-a-distracted-world',
     episodeNumber: 42,
-    title: 'Deep Work in a Distracted World',
-    description: 'Strategies for maintaining focus and producing your best work in an age of constant interruption.',
-    summary: 'Cal Newport joins us to discuss the art of deep work, protecting your attention, and why the ability to focus is becoming a superpower.',
+    title: 'Andrew Huberman: Relationships, Drama, Betrayal, and Truth',
+    description: 'Andrew Huberman is a neurobiologist at Stanford University and host of the Huberman Lab Podcast. We discuss the complexities of human relationships.',
+    summary: 'Exploring the biological and psychological underpinnings of why we bond, why we betray, and how humans navigate truth and deception in social hierarchies.',
     showNotes: `<h2>Episode Highlights</h2>
 <ul>
-<li>The science of attention and focus</li>
-<li>Creating rituals for deep work</li>
-<li>Managing digital distractions</li>
+<li>The neuroscience of pair bonding</li>
+<li>Dealing with betrayal and repairing trust</li>
+<li>The role of truth in long-term satisfaction</li>
 </ul>`,
     publishedAt: '2024-02-09T08:00:00Z',
-    duration: 3000,
+    duration: 5200,
     audioUrl: '/audio/ep-42.mp3',
+    videoUrl: 'https://youtube.com/watch?v=PB2OEGXmnKU',
     coverImageUrl: '/images/episodes/ep-42.jpg',
     topics: [mockTopics[4], mockTopics[3]],
     hosts: [mockHosts[0]],

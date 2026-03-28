@@ -125,7 +125,11 @@ export interface Blob {
     color: RGBA;
     noiseOffsetX: number;
     noiseOffsetY: number;
-    speed: number;   // noise traversal speed
+    speed: number;   // base noise traversal speed
+    phaseX: number;  // Accumulated phase X
+    phaseY: number;  // Accumulated phase Y
+    phaseBreathe: number; // Accumulated breathing phase
+    currentIntensity?: number; // Lerped intensity for smooth state transitions
 }
 
 export interface SoundscapeState {
@@ -147,11 +151,11 @@ export interface EngineConfig {
 
 export const DEFAULT_CONFIG: EngineConfig = {
     blobCount: 5,
-    baseSpeed: 0.00015,
-    playingSpeedMultiplier: 4.5,
-    baseRadius: 0.4,
-    radiusPulseAmount: 0.1,
-    globalOpacity: 0.5,
+    baseSpeed: 0.00015, // Majestic slow drift
+    playingSpeedMultiplier: 2.0, // Smooth, engaging acceleration
+    baseRadius: 0.45,
+    radiusPulseAmount: 0.05, // Distinct, calm breathing
+    globalOpacity: 0.45, // Full vibrant atmosphere 
 };
 
 // Default palette when no topic colors are provided
@@ -171,6 +175,9 @@ export function createBlobs(config: EngineConfig, topicColors: string[]): Blob[]
             noiseOffsetX: i * 100,
             noiseOffsetY: i * 100 + 50,
             speed: config.baseSpeed * (0.8 + Math.random() * 0.4),
+            phaseX: i * 100,
+            phaseY: i * 100 + 50,
+            phaseBreathe: i * 100,
         });
     }
 
@@ -183,22 +190,34 @@ export function createBlobs(config: EngineConfig, topicColors: string[]): Blob[]
 
 export function updateBlobs(
     blobs: Blob[],
-    time: number,
+    deltaTime: number, // Use deltaTime instead of absolute time
     state: SoundscapeState,
     config: EngineConfig,
 ): void {
     const speedMult = state.isPlaying ? config.playingSpeedMultiplier : 1;
+    const targetIntensity = state.isPlaying ? 0.6 : 0.4;
 
     for (const blob of blobs) {
         const effectiveSpeed = blob.speed * speedMult;
-        const t = time * effectiveSpeed;
+
+        // Accumulate phase dynamically to prevent instant jumps when multiplier changes
+        blob.phaseX += deltaTime * effectiveSpeed;
+        blob.phaseY += deltaTime * effectiveSpeed;
+        blob.phaseBreathe += deltaTime * 0.0008 * speedMult;
+
+        // Smoothly fade intensity instead of flashing
+        if (blob.currentIntensity === undefined) {
+            blob.currentIntensity = targetIntensity;
+        }
+        const lerpFactor = 1 - Math.exp(-deltaTime * 0.002);
+        blob.currentIntensity += (targetIntensity - blob.currentIntensity) * lerpFactor;
 
         // Noise-driven organic movement
-        blob.x = 0.5 + noise2D(blob.noiseOffsetX + t, 0) * 0.4;
-        blob.y = 0.5 + noise2D(0, blob.noiseOffsetY + t) * 0.4;
+        blob.x = 0.5 + noise2D(blob.phaseX, 0) * 0.4;
+        blob.y = 0.5 + noise2D(0, blob.phaseY) * 0.4;
 
-        // Radius breathing — faster when playing
-        const breathe = Math.sin(time * 0.0008 * speedMult + blob.noiseOffsetX) * config.radiusPulseAmount;
+        // Radius breathing 
+        const breathe = Math.sin(blob.phaseBreathe) * config.radiusPulseAmount;
         blob.radius = config.baseRadius + breathe;
     }
 }
@@ -223,8 +242,8 @@ export function renderToCanvas(
 
         const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
 
-        // Intensity modulated by playing state
-        const intensity = state.isPlaying ? 0.7 : 0.4;
+        // Use the smoothly lerped intensity 
+        const intensity = blob.currentIntensity ?? 0.4;
         const { r: cr, g: cg, b: cb } = blob.color;
 
         gradient.addColorStop(0, `rgba(${cr}, ${cg}, ${cb}, ${intensity * config.globalOpacity})`);

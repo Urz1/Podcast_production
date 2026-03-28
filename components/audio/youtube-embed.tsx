@@ -157,17 +157,18 @@ export function YouTubeEmbed({
         await loadYouTubeAPI();
         if (!window.YT) return;
 
-        // Create a target div for the player
+        // Create a target div for the player by first clearing the container (vital for React Strict Mode & client navigation)
+        containerRef.current.innerHTML = '';
         const targetId = `yt-player-${episodeId}`;
-        let target = document.getElementById(targetId);
-        if (!target) {
-            target = document.createElement('div');
-            target.id = targetId;
-            containerRef.current.appendChild(target);
-        }
+        const target = document.createElement('div');
+        target.id = targetId;
+        target.className = 'absolute inset-0 w-full h-full';
+        containerRef.current.appendChild(target);
 
         playerRef.current = new window.YT.Player(targetId, {
             videoId,
+            width: '100%',
+            height: '100%',
             playerVars: {
                 modestbranding: 1,
                 rel: 0,
